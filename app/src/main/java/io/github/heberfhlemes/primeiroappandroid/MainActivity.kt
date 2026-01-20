@@ -1,20 +1,52 @@
 package io.github.heberfhlemes.primeiroappandroid
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.widget.EditText
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.core.net.toUri
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+
+        val txtWelcome = findViewById<TextView>(R.id.txtWelcome)
+        txtWelcome.setOnClickListener {
+            showNameDialog(txtWelcome)
         }
+
+        val githubIcon = findViewById<ImageView>(R.id.imgGithub)
+        githubIcon.setOnClickListener {
+            val intent = Intent(
+                Intent.ACTION_VIEW,
+                "https://github.com/HeberFHLemes/primeiro-app-android".toUri()
+            )
+            startActivity(intent)
+        }
+
+        showNameDialog(txtWelcome)
+    }
+
+    private fun showNameDialog(txtWelcome: TextView) {
+        val editText = EditText(this)
+
+        AlertDialog.Builder(this)
+            .setTitle(getString(R.string.welcome_question))
+            .setView(editText)
+            .setCancelable(false)
+            .setPositiveButton(android.R.string.ok) { _, _ ->
+                val nome = editText.text.toString().trim()
+
+                txtWelcome.text = getString(
+                    R.string.welcome_user,
+                    nome.ifEmpty { "Usuário" }
+                )
+            }
+            .show()
     }
 }
