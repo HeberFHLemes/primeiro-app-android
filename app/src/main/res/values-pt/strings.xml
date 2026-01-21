@@ -5,4 +5,5 @@
     <string name="welcome_user">Olá, %1$s!</string>
     <string name="check_code">Confira o código</string>
     <string name="github_icon_desc">Ícone do GitHub</string>
+    <string name="default_user_name">Usuário</string>
 </resources>

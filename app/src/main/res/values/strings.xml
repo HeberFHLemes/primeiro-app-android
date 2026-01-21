@@ -4,4 +4,5 @@
     <string name="welcome_user">Hello, %1$s!</string>
     <string name="check_code">Check the code</string>
     <string name="github_icon_desc">GitHub Icon</string>
+    <string name="default_user_name">User</string>
 </resources>

@@ -41,11 +41,9 @@ class MainActivity : AppCompatActivity() {
             .setCancelable(false)
             .setPositiveButton(android.R.string.ok) { _, _ ->
                 val nome = editText.text.toString().trim()
+                    .ifEmpty { getString(R.string.default_user_name) }
 
-                txtWelcome.text = getString(
-                    R.string.welcome_user,
-                    nome.ifEmpty { "Usuário" }
-                )
+                txtWelcome.text = getString(R.string.welcome_user, nome)
             }
             .show()
     }
