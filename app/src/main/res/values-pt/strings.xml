@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PrimeiroAppAndroid</string>
+    <string name="welcome_question">Qual é o seu nome?</string>
+    <string name="welcome_user">Olá, %1$s!</string>
+    <string name="check_code">Confira o código</string>
+    <string name="github_icon_desc">Ícone do GitHub</string>
+</resources>
